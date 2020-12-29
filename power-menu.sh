@@ -5,7 +5,10 @@ choice=$(echo -e "Lock\nSuspend\nHibernate\nLogout\nReboot\nShutdown\n" | $DMENU
 
 case "$choice" in
     Logout)
-        killall dwm
+        pgrep dwm && killall dwm
+        pgrep qtile && killall qtile
+        pgrep openbox && killall openbox
+        pgrep awesome && killall awesome
         ;;
    
     Shutdown)
